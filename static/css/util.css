@@ -43,7 +43,8 @@
 .fs-31 {font-size: 31px;}
 .fs-32 {font-size: 32px;}
 .fs-33 {font-size: 33px;}
-.fs-34 {font-size: 34px !important; }
+.fs-34 {font-size: 34px !important;
+font-weight: 600 !important; }
 .fs-35 {font-size: 35px;}
 .fs-36 {font-size: 36px;}
 .fs-37 {font-size: 37px;}

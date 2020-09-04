@@ -39,6 +39,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*[ FONT ]
 ///////////////////////////////////////////////////////////
 */
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;600;700&display=swap');
+
 
 @font-face {
   font-family: Montserrat-Regular;
@@ -91,13 +93,13 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 body, html {
 	height: 100%;
-	font-family: Montserrat-Regular, sans-serif;
+	font-family: 'Bai Jamjuree', sans-serif ;
   font-weight: 400;
 }
 
 /* ------------------------------------ */
 a {
-	font-family: Montserrat-Regular;
+  font-family: 'Bai Jamjuree', sans-serif ;
   font-weight: 400;
 	font-size: 15px;
 	line-height: 1.7;
@@ -125,7 +127,7 @@ h1,h2,h3,h4,h5,h6 {
 
 p {
 	font-family: Montserrat-Regular;
-	font-size: 15px;
+  font-size: 18px;
 	line-height: 1.7;
 	color: #888888;
 	margin: 0px;
@@ -197,10 +199,6 @@ iframe {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -208,8 +206,6 @@ iframe {
     width: 50px;
     height: 50px;
     -webkit-animation: ball-scale infinite linear .75s;
-    -moz-animation: ball-scale infinite linear .75s;
-    -o-animation: ball-scale infinite linear .75s;
     animation: ball-scale infinite linear .75s;
     border-radius: 100%;
     background-color: #e65540;
@@ -217,53 +213,11 @@ iframe {
 
 @-webkit-keyframes ball-scale {
     0% {
-        -webkit-transform: scale(.1);
-        -ms-transform: scale(.1);
-        -o-transform: scale(.1);
         transform: scale(.1);
         opacity: 1;
     }
 
     100% {
-        -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-        -o-transform: scale(1);
-        transform: scale(1);
-        opacity: 0;
-    }
-}
-
-@-moz-keyframes ball-scale {
-    0% {
-        -webkit-transform: scale(.1);
-        -ms-transform: scale(.1);
-        -o-transform: scale(.1);
-        transform: scale(.1);
-        opacity: 1;
-    }
-
-    100% {
-        -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-        -o-transform: scale(1);
-        transform: scale(1);
-        opacity: 0;
-    }
-}
-
-@-o-keyframes ball-scale {
-    0% {
-        -webkit-transform: scale(.1);
-        -ms-transform: scale(.1);
-        -o-transform: scale(.1);
-        transform: scale(.1);
-        opacity: 1;
-    }
-
-    100% {
-        -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-        -o-transform: scale(1);
         transform: scale(1);
         opacity: 0;
     }
@@ -271,17 +225,11 @@ iframe {
 
 @keyframes ball-scale {
     0% {
-        -webkit-transform: scale(.1);
-        -ms-transform: scale(.1);
-        -o-transform: scale(.1);
         transform: scale(.1);
         opacity: 1;
     }
 
     100% {
-        -webkit-transform: scale(1);
-        -ms-transform: scale(1);
-        -o-transform: scale(1);
         transform: scale(1);
         opacity: 0;
     }
@@ -338,10 +286,6 @@ iframe {
 }
 
 .select2-container .select2-selection--single {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -366,10 +310,6 @@ iframe {
   top: 50%;
   transform: translateY(-50%);
   right: 0px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -388,9 +328,6 @@ iframe {
   border-right: 1px solid #888888;
   border-bottom: 1px solid #888888;
   color: white;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
   margin-bottom: 2px;
   margin-right: 8px;
@@ -508,9 +445,6 @@ iframe {
 */
 .header1 {
   height: 125px;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -moz-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -539,10 +473,6 @@ iframe {
   height: 45px;
   background-color: #f5f5f5;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -556,10 +486,6 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   padding-left: 40px;
@@ -586,10 +512,6 @@ iframe {
   height: 100%;
   top: 0;
   right: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -600,10 +522,6 @@ iframe {
 /*[ Menu ]
 ===========================================================*/
 .wrap_header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -612,9 +530,6 @@ iframe {
   justify-content: center;
   align-items: center;
   position: relative;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -moz-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -630,10 +545,6 @@ iframe {
   position: absolute;
   left: 52px;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -647,10 +558,6 @@ iframe {
 .main_menu {
   list-style-type: none;
   margin: 0px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -742,19 +649,11 @@ li.sale-noti > a {
 
 /* ------------------------------------ */
 .header-icons {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   position: absolute;
   right: 52px;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -775,10 +674,6 @@ li.sale-noti > a {
 }
 
 .header-icons-noti {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -829,18 +724,10 @@ li.sale-noti > a {
   -moz-transition: all 0.3s;
   
   transform-origin: top right;
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  -o-transform: scale(0);
   transform: scale(0);
 }
 
 .show-header-dropdown {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
   transform: scale(1);
 }
 
@@ -854,10 +741,6 @@ li.sale-noti > a {
 }
 
 .header-cart-item {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -880,10 +763,6 @@ li.sale-noti > a {
   content: '\e870';
   font-family: Linearicons;
   font-size: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -940,10 +819,6 @@ li.sale-noti > a {
 }
 /* ------------------------------------ */
 .header-cart-buttons {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -959,10 +834,6 @@ li.sale-noti > a {
 /*[ Header Mobile ]
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .wrap_header_mobile {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -988,10 +859,6 @@ li.sale-noti > a {
 /*[ btn show menu ]
 -----------------------------------------------------------*/
 .btn-show-menu {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   height: 100%;
   justify-content: center;
@@ -999,10 +866,6 @@ li.sale-noti > a {
 }
 
 .hamburger {
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -o-transform: scale(0.8);
   transform: scale(0.8);
   margin-top: 5px;
 }
@@ -1011,10 +874,6 @@ li.sale-noti > a {
 /*[ Header icon mobile ]
 -----------------------------------------------------------*/
 .header-icons-mobile {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   margin-right: 15px;
@@ -1079,9 +938,6 @@ li.sale-noti > a {
   right: 20px;
   top: 5px;
   padding: 10px;
-  -webkit-transition: all 0.4s !important;
-  -o-transition: all 0.4s !important;
-  -moz-transition: all 0.4s !important;
   transition: all 0.4s !important;
 }
 
@@ -1090,10 +946,6 @@ li.sale-noti > a {
 }
 
 .turn-arrow {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
@@ -1133,20 +985,12 @@ li.sale-noti > a {
 }
 
 .topbar-child2-mobile {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .topbar-social-moblie {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
 }
@@ -1158,10 +1002,6 @@ li.sale-noti > a {
 .topbar2 {
   background-color: #fff;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1213,11 +1053,6 @@ li.sale-noti > a {
   width: 320px;
   height: 100vh;
   border-right: 1px solid #e5e5e7;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1228,10 +1063,6 @@ li.sale-noti > a {
 /*[ Menu ]
 ===========================================================*/
 .container-menu-header-v3 .wrap_header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1255,10 +1086,6 @@ li.sale-noti > a {
 /*[ Header Icon ]
 -----------------------------------------------------------*/
 .container-menu-header-v3 .header-icons3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   position: unset;
@@ -1277,10 +1104,6 @@ li.sale-noti > a {
 .container-menu-header-v3 .main_menu {
   list-style-type: none;
   margin: 0px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
@@ -1324,10 +1147,6 @@ li.sale-noti > a {
 
 @media (max-width: 992px){
   .wrap_header_mobile {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex !important;
   }
   .wrap_header {display: none;}
@@ -1366,10 +1185,6 @@ li.sale-noti > a {
 }
 
 .arrow-slick1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1382,17 +1197,10 @@ li.sale-noti > a {
   opacity: 0;
   
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
   transform: translateY(-50%);
 
   border-radius: 50%;
   z-index: 200;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
 
@@ -1501,17 +1309,9 @@ li.sale-noti > a {
   position: absolute;
   z-index: 100;
   top: calc((100% - 70px) / 2);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 39px;
   color: #cccccc;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
 
@@ -1579,9 +1379,6 @@ li.sale-noti > a {
     text-transform: uppercase;
     font-weight: unset;
     border-radius: 20px;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -1619,10 +1416,6 @@ li.sale-noti > a {
 .block1-wrapbtn {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
   transform: translateX(-50%);
   bottom: 20px;
 
@@ -1644,10 +1437,6 @@ li.sale-noti > a {
   font-family: Montserrat-Regular;
   font-size: 12px;
   color: white;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1684,10 +1473,6 @@ li.sale-noti > a {
 .block2-btn-addcart {
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
   transform: translateX(-50%);
   bottom: -45px;
 }
@@ -1702,10 +1487,6 @@ li.sale-noti > a {
   font-size: 20px;
   color: white;
   line-height: 0;
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  -o-transform: scale(0);
   transform: scale(0);
 }
 
@@ -1747,10 +1528,6 @@ li.sale-noti > a {
 
 .block2-overlay:hover .block2-btn-addwishlist,
 .block2-overlay:hover .block2-btn-towishlist{
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
   transform: scale(1);
 }
 
@@ -1836,10 +1613,6 @@ li.sale-noti > a {
 /* ------------------------------------ */
 .block4-overlay-heart {
   transform-origin: top left;
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  -o-transform: scale(0);
   transform: scale(0);
 }
 
@@ -1854,10 +1627,6 @@ li.sale-noti > a {
 }
 
 .block4:hover .block4-overlay-heart {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
   transform: scale(1);
 }
 
@@ -2006,9 +1775,6 @@ li.sale-noti > a {
   left: 0;
   cursor: pointer;
   border: 3px solid transparent;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
 
@@ -2134,10 +1900,6 @@ li.sale-noti > a {
   content: '\e870';
   font-family: Linearicons;
   font-size: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2190,10 +1952,6 @@ li.sale-noti > a {
 ///////////////////////////////////////////////////////////
 */
 .tab01 .nav-tabs {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -2270,10 +2028,6 @@ body {padding-right: 0px !important;}
   height: 100%;
   padding: 0;
   margin: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -2295,9 +2049,6 @@ body {padding-right: 0px !important;}
   top: 0;
   left: 0;
   opacity: 0;
-  -webkit-transition: all 2s;
-  -o-transition: all 2s;
-  -moz-transition: all 2s;
   transition: all 2s;
 }
 
@@ -2310,10 +2061,6 @@ body {padding-right: 0px !important;}
   font-size: 50px;
   color: white;
   opacity: 0.6;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: center;

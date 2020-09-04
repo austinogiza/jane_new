@@ -127,7 +127,6 @@
   display: block;
   width: 10px;
   height: 10px;
-  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   transform: rotate(45deg);
   border-right: 2px solid #fff;
@@ -139,7 +138,6 @@
   height: 40px;
   width: 22px;
   border-radius: 10px;
-  -webkit-transform: none;
   transform: none;
   border: 2px solid #ffffff;
   top: 170px;
@@ -162,12 +160,10 @@
 @-webkit-keyframes animated-mouse {
   0% {
     opacity: 1;
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(6px);
     transform: translateY(6px);
   }
 }
@@ -229,5 +225,3 @@ footer a:hover {
   right: 0;
   bottom: 0;
 }
-
-/*# sourceMappingURL=maps/home.css.map */
