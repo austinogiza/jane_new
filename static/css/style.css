@@ -146,14 +146,14 @@ input[type="tel"]:focus {
 }
 
 .btn-transparent {
-  background: transparent;
+  background: var(--jane) !important;
   padding: 0;
-  color: #000;
+  color: var(--white) !important;
 }
 
 .btn-transparent:hover {
-  background: transparent;
-  color: #000;
+  background: var(--black) !important;
+  color: var(--white) !important;
 }
 
 .btn-large {

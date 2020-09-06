@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load static %}
 
 {% block content %}
 <section class="page-header">
@@ -82,7 +83,7 @@
                         <span>$250</span>
                      </div>
                      <div class="verified-icon">
-                        <img src="images/shop/verified.png">
+                        <img src="{% static 'images/shop/verified.png' %}">
                      </div>
                   </div>
                </div>
