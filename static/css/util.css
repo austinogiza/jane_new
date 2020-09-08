@@ -33,7 +33,8 @@
 .fs-21 {font-size: 21px;}
 .fs-22 {font-size: 22px;}
 .fs-23 {font-size: 23px;}
-.fs-24 {font-size: 24px;}
+.fs-24 {font-size: 24px !important;
+}
 .fs-25 {font-size: 25px;}
 .fs-26 {font-size: 26px;}
 .fs-27 {font-size: 27px;}

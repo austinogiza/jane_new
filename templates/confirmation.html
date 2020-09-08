@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block css %}
+<title>Paystack Success - Jane's Fashion</title>
+
+{% endblock css %}
 {% block content %}
 
 <!-- Page Wrapper -->
@@ -10,8 +14,8 @@
         <div class="block text-center">
         	<i class="tf-ion-android-checkmark-circle"></i>
           <h2 class="text-center ">Thank you! For your payment</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, sed.</p>
-          <a href="{% url 'jane:shop' %}" class="btn btn-main mt-20">Continue Shopping</a>
+      
+          <a href="{% url 'core:shop' %}" class="btn btn-main mt-20">Continue Shopping</a>
         </div>
       </div>
     </div>

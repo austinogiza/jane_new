@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
+{% block css %}
+{% load humanize %}
+{% load paystack %}
 
+<title>Purchase Confirmation - Jane's Fashion</title>
+
+{% endblock css %}
 {% block content %}
 
 <section class="page-header">
@@ -10,7 +16,7 @@
 					<h1 class="page-name">Purchase Confirmation</h1>
 					<ol class="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li class="active">purchase confirmation</li>
+						<li class="active">Purchase confirmation</li>
 					</ol>
 				</div>
 			</div>
@@ -29,39 +35,34 @@
 				            <table id="purchase-receipt" class="table">
 				                <thead>
 									<tr>
-					                    <th><strong>Payment:</strong></th>
-					                    <th>33056</th>
+					                    <th><strong>Payment For :</strong></th>
+					                    <th> JNF{{order.order_id}}</th>
 				                  	</tr>
 				                </thead>
 
 				                <tbody>
 
-				                  	<tr>
-				                    	<td class=""><strong>Payment Status:</strong></td>
-				                    	<td class="">Complete</td>
-				                  	</tr>
-
+				          
 
 				                  	<tr>
 				                    	<td><strong>Payment Method:</strong></td>
-				                    	<td>Free Purchase</td>
+				                    	<td>Paystack</td>
 				                  	</tr>
 				                  	<tr>
-				                    	<td><strong>Date:</strong></td>
-				                    	<td>December 20, 2016</td>
+				                    	<td><strong>Amount:</strong></td>
+				                    	<td> &#8358; {{order.get_total|intcomma}}</td>
 				                  	</tr>
 				                  	<tr>
-				                    	<td><strong>Subtotal</strong></td>
-				                    	<td>
-				                      	$18.00        </td>
+				                    	<td><strong>Items</strong></td>
+										{% for order_item in order.items.all %}
+											<td>{{order_item.item.title}}</td>
+										{% endfor %}
 				                    </tr>
-
-				                    <tr>
-				                      	<td><strong>Total Price:</strong></td>
-				                      	<td>$18.00</td>
-				                    </tr>
-				                </tbody>
-				            </table>
+								
+								</tbody>
+								
+							</table>
+						<div class="text-center m-t-30">	{% paystack_button amount=amount email=email button_class="btn btn-main" %}</div>
               			</div>
             		</div>
           		</div>

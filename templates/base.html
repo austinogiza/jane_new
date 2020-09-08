@@ -1,5 +1,6 @@
 
 {% load static %}
+{% load cart_template_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -27,10 +28,13 @@
 <meta name="theme-color" content="#B97778">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="description" content="Jane's Fashion">
+
+  {% block css %}
+  {% endblock css %}
   
   {% comment %} <meta name="author" content="Themefisher.com"> {% endcomment %}
 <meta name="theme-color" content="#B97778">
-  <title>Jane's Fashion</title>
+
 
   <!-- Mobile Specific Meta-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,10 +78,7 @@
 </head>
 
 <body id="body">
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+
 {% include 'navbar.html' %}
 {% include 'alerts.html' %}
 {% block content %}

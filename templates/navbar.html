@@ -1,3 +1,5 @@
+{% load cart_template_tags %}
+
 {% load static %}
 
 <!-- Start Top Header Bar -->
@@ -11,67 +13,25 @@
 			</div>
 			<div class="col-md-4 col-xs-12 col-sm-4">
 				<div class="contact-number">
-					<form action="post"><input type="search" class="form-control" placeholder="Search..."></form>
+					<form action="{% url 'blog:search'%}" method='GET' ><input type="search" class="form-control" value="{{ request.GET.q }}" name="q" placeholder="Search..."></form>
 				
 				</div>
 			</div>
 			<div class="col-md-4 col-xs-12 col-sm-4">
 			<!-- Cart -->
 			<ul class="top-menu text-right list-inline">
-	          <li class="dropdown cart-nav dropdown-slide">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i class="tf-ion-bag"></i> Count</a>
-	            <div class="dropdown-menu cart-dropdown">
-	            	<!-- Cart Item -->
-	            	<div class="media">
-	            		<a class="pull-left" href="#">
-	            			<img  class="media-object" src="{% static 'images/shop/cart/cart-1.jpg' %}" alt="image" />
-	            		</a>
-	            		<div class="media-body">
-	            			<h4 class="media-heading"><a href="">Ladies Bag</a></h4>
-	            			<div class="cart-price">
-                              <span>1 x</span>
-                              <span>1250.00</span>
-                            </div>
-                            <h5><strong>$1200</strong></h5>
-	            		</div>
-                        <a href="#" class="remove"><i class="tf-ion-close"></i></a>
-	            	</div><!-- / Cart Item -->
-	            	<!-- Cart Item -->
-	            	<div class="media">
-	            		<a class="pull-left" href="#">
-	            			<img  class="media-object" src="{% static 'images/shop/cart/cart-2.jpg' %}" alt="image" />
-	            		</a>
-	            		<div class="media-body">
-	            			<h4 class="media-heading"><a href="">Ladies Bag</a></h4>
-	            			<div class="cart-price">
-                              <span>1 x</span>
-                              <span>1250.00</span>
-                            </div>
-                            <h5><strong>$1200</strong></h5>
-	            		</div>
-                        <a href="#" class="remove"><i class="tf-ion-close"></i></a>
-	            	</div><!-- / Cart Item -->
-	            	
-	            	<div class="cart-summary">
-                        <span>Total</span>
-                        <span class="total-price">$1799.00</span>
-                    </div>
-                    <ul class="text-center cart-buttons">
-                    	<li><a href="{% url 'jane:cart' %}" class="btn btn-small">View Cart</a></li>
-                    	<li><a href="{% url 'jane:checkout' %}" class="btn btn-small btn-solid-border">Checkout</a></li>
-                    </ul>
-                </div>
 
-	          </li><!-- / Cart -->
-
+<li class="dropdown search dropdown-slide">
+	  <a href="{% url 'core:cart'%}">       	     <i class="tf-ion-ios-cart fs-24"></i>     {{ request.user|cart_item_count }} </a>
+	                    </li>
 	          <!-- Search -->
 	          <li class="dropdown search dropdown-slide">
-	  <a href="">        <i class="tf-ion-android-favorite-outline"></i> </a>
+	  <a href="{% url 'core:dashboard'%}">        <i class="tf-ion-android-favorite-outline fs-24"></i> </a>
 	                    </li>
                        
                        {% if request.user.is_authenticated %}
                          <li class="dropdown search dropdown-slide">
-	  <a href="">        <i class="tf-ion-log-out"></i> </a>
+	  <a href="{% url 'account_logout' %}">        <i class="tf-ion-log-out fs-24"></i> </a>
 
     
 
@@ -81,7 +41,7 @@
                        <li class="dropdown search dropdown-slide">
 
 
-	  <a href="">        <i class="  tf-profile-male"></i> </a> </li>
+	  <a href="{% url 'account_login' %}">        <i class="  tf-profile-male"></i> </a> </li>
       {% endif %}
                       
             
@@ -117,25 +77,25 @@
 
 	          <!-- Home -->
 	          <li class="dropdown ">
-	            <a href="{% url 'jane:home' %}">Home</a>
+	            <a href="{% url 'core:home' %}">Home</a>
 	          </li><!-- / Home -->
 
 
 	          <!-- Elements -->
 	      
 			  <li class="dropdown ">
-	            <a href="{% url 'jane:shop' %}">Shop</a>
+	            <a href="{% url 'core:shop' %}">Shop</a>
 	          </li><!-- / Home -->
  
 			  <li class="dropdown ">
-	            <a href="{% url 'jane:about' %}">About Us</a>
+	            <a href="{% url 'core:about' %}">About Us</a>
 	          </li><!-- / Home -->
 
 			  <li class="dropdown ">
-	            <a href="{% url 'jane:detail' %}">Single Product</a>
+	            
 	          </li><!-- / Home -->
 			  <li class="dropdown ">
-	            <a href="{% url 'jane:cart' %}">Cart</a>
+	            <a href="{% url 'core:cart' %}">Cart</a>
 	          </li><!-- / Home -->
 
 	   

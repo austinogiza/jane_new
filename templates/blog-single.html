@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
 
+<title>
+	{{blog.title|title}} - Jane's Fashion
+</title>
+
+{% endblock css %}
 {% block content %}
 
 
@@ -12,8 +19,8 @@
 				<div class="content">
 					<h1 class="page-name">Blog</h1>
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li class="active">blog</li>
+						<li><a href="{% url 'core:home' %}">Home</a></li>
+						<li class="active">{{blog.title|title}}</li>
 					</ol>
 				</div>
 			</div>
@@ -28,22 +35,27 @@
 			<div class="col-md-12">
 				<div class="post post-single">
 					<div class="post-thumb">
-						<img class="img-responsive" src="{% static 'images/blog/blog-post-1.jpg' %}" alt="">
+						<img class="img-responsive-blog" src="{{blog.image.url}}" alt="">
 					</div>
-					<h2 class="post-title">How To Wear Bright Shoes</h2>
+					<h2 class="post-title">{{blog.title|title}}</h2>
 					<div class="post-meta">
 						<ul>
 							<li>
-								<i class="tf-ion-ios-calendar"></i> 20, MAR 2017
+								<i class="tf-ion-ios-calendar"></i> {{ blog.time }}
 							</li>
 							<li>
-								<i class="tf-ion-android-person"></i> POSTED BY ADMIN
+								<i class="tf-ion-android-person"></i> POSTED BY {{ blog.author|title }}
 							</li>
 							<li>
-								<a href=""><i class="tf-ion-ios-pricetags"></i> LIFESTYLE</a>,<a href=""> TRAVEL</a>, <a href="">FASHION</a>
+					{{blog.tags}}
 							</li>
 							<li>
-								<a href=""><i class="tf-ion-chatbubbles"></i> 4 COMMENTS</a>
+								<a href=""><i class="tf-ion-chatbubbles"></i> {{ blog.get_comment_count}} 
+								{% if blog.get_comment_count == 1 or blog.get_comment_count == 0 %}
+								Comment
+								{% else %}COMMENTS
+								{% endif %}
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -77,167 +89,75 @@
 				    </div>
 
 				    <div class="post-comments">
-				    	<h3 class="post-sub-heading">10 Comments</h3>
+				    	<h3 class="post-sub-heading">{{ blog.get_comment_count}} 
+							{% if blog.get_comment_count == 1 or blog.get_comment_count == 0 %}
+							Comment
+							{% else %}COMMENTS
+							{% endif %}</h3>
 				    	<ul class="media-list comments-list m-bot-50 clearlist">
-						    <!-- Comment Item start-->
-						    <li class="media">
 
-						        <a class="pull-left" href="#">
-						            <img class="media-object comment-avatar" src="{% static 'images/blog/blog-post-1.jpg' %}" alt="" width="50" height="50">
-						        </a>
+							{% for comment in blog.get_comment %}
+				    <!-- Comment Item start-->
+					<li class="media">
 
-						        <div class="media-body">
-						            <div class="comment-info">
-						                <h4 class="comment-author">
-						                    <a href="#">Jonathon Andrew</a>
-						                	
-						                </h4>
-						                <time>July 02, 2015, at 11:34</time>
-						                <a class="comment-button" href="#"><i class="tf-ion-chatbubbles"></i>Reply</a>
-						            </div>
+						<a class="pull-left" href="#">
+						
+						</a>
 
-						            <p>
-						                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
-						            </p>
+						<div class="media-body">
 
-						            <!--  second level Comment start-->
-						            <div class="media">
+							<div class="comment-info">
+								<div class="comment-author">
+					{{comment.user|title}}
+								</div>
+								<time>				{{comment.time}}</time>
+						
+							</div>
 
-						                <a class="pull-left" href="#">
-						                    <img class="media-object comment-avatar" src="{% static 'images/blog/blog-post-1.jpg' %}" alt="" width="50" height="50">
-						                </a>
+							<p>
+								{{comment.comment|safe}}
+							</p>
 
-						                <div class="media-body">
+						</div>
 
-						                    <div class="comment-info">
-						                        <div class="comment-author">
-						                            <a href="#">Senorita</a>
-						                        </div>
-						                        <time>July 02, 2015, at 11:34</time>
-						                        <a class="comment-button" href="#"><i class="tf-ion-chatbubbles"></i>Reply</a>
-						                    </div>
-
-						                    <p>
-						                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
-						                    </p>
-
-
-						                    <!-- third level Comment start -->
-						                    <div class="media">
-
-						                        <a class="pull-left" href="#">
-						                            <img class="media-object comment-avatar" src="{% static 'images/blog/blog-post-1.jpg' %}" alt="" width="50" height="50">
-						                        </a>
-
-						                        <div class="media-body">
-
-						                            <div class="comment-info">
-						                                <div class="comment-author">
-						                                    <a href="#">Senorita</a>
-						                                </div>
-						                                <time>July 02, 2015, at 11:34</time>
-						                                <a class="comment-button" href="#"><i class="tf-ion-chatbubbles"></i>Reply</a>
-						                            </div>
-
-						                            <p>
-						                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
-						                            </p>
-
-
-						                        </div>
-
-						                    </div>
-						                    <!-- third level Comment end -->
-
-						                </div>
-
-						            </div>
-						            <!-- second level Comment end -->
-
-						        </div>
-
-						    </li>
-						    <!-- End Comment Item -->
-
-						    <!-- Comment Item start-->
-						    <li class="media">
-
-						        <a class="pull-left" href="#">
-						            <img class="media-object comment-avatar" src="images/blog/avater-4.jpg" alt="" width="50" height="50">
-						        </a>
-
-						        <div class="media-body">
-
-						            <div class="comment-info">
-						                <div class="comment-author">
-						                    <a href="#">Jonathon Andrew</a>
-						                </div>
-						                <time>July 02, 2015, at 11:34</time>
-						                <a class="comment-button" href="#"><i class="tf-ion-chatbubbles"></i>Reply</a>
-						            </div>
-
-						            <p>
-						                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
-						            </p>
-
-						        </div>
-
-						    </li>
-						    <!-- End Comment Item -->
-
-						    <!-- Comment Item start-->
-						    <li class="media">
-
-						        <a class="pull-left" href="#">
-						            <img class="media-object comment-avatar" src="{% static 'images/blog/blog-post-1.jpg' %}" alt="" width="50" height="50">
-						        </a>
-
-						        <div class="media-body">
-
-						            <div class="comment-info">
-						                <div class="comment-author">
-						                    <a href="#">Jonathon Andrew</a>
-						                </div>
-						                <time>July 02, 2015, at 11:34</time>
-						                <a class="comment-button" href="#"><i class="tf-ion-chatbubbles"></i>Reply</a>
-						            </div>
-
-						            <p>
-						                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
-						            </p>
-
-						        </div>
-
-						    </li>
-						    <!-- End Comment Item -->
-
+					</li>
+					<!-- End Comment Item -->
+{% endfor %}
 						</ul>
 				    </div>
 
 				    <div class="post-comments-form">
 				    	<h3 class="post-sub-heading">Leave You Comments</h3>
-				    	<form method="post" action="#" id="form" role="form" >
+				
 
-				            <div class="row">
+						{% if request.user.is_authenticated %}
+						<form method="post"  id="form" role="form" >
+							{% csrf_token %}
+														<div class="row">
+							
+														   
+							
+															<!-- Comment -->
+															<div class="form-group col-md-12">
+														   {{form|crispy}}
+																	 </div>
+							
+															<!-- Send Button -->
+															<div class="form-group col-md-12">
+																<button type="submit" class="btn btn-main ">
+																	Send comment
+																</button>
+															</div>
+							
+							
+														</div>
+							
+													</form>
 
-				               
+													{% else %}
 
-				                <!-- Comment -->
-				                <div class="form-group col-md-12">
-				                    <textarea name="text" id="text" class=" form-control" rows="16" style="resize: none;" placeholder="Comment" maxlength="400"></textarea>
-				                </div>
-
-				                <!-- Send Button -->
-				                <div class="form-group col-md-12">
-				                    <button type="submit" class="btn btn-small btn-main ">
-				                        Send comment
-				                    </button>
-				                </div>
-
-
-				            </div>
-
-				        </form>
+													<a href="{% url 'account_login'  %}" class="btn btn-main">Login To Comment</a>
+						{% endif %}
 				    </div>
 
 

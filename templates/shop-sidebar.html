@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
+
+{% block css %}
+{% load thumbnail %}
+<title>Shop - Jane's Fashion</title>
+{% endblock css %}
+
+{% load humanize %}
 {% load static %}
 {% block content %}
+
 
 <section class="page-header">
 	<div class="container">
@@ -9,8 +17,8 @@
 				<div class="content">
 					<h1 class="page-name">Shop</h1>
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li class="active">shop</li>
+						<li><a href="{% url 'core:home' %}">Home</a></li>
+						<li class="active">Shop</li>
 					</ol>
 				</div>
 			</div>
@@ -24,13 +32,15 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="widget">
-					<h4 class="widget-title">Short By</h4>
+					<h4 class="widget-title">Sort By</h4>
 					<form method="post" action="#">
+					{{ filter.form }}
                         <select class="form-control">
                             <option>Man</option>
                             <option>Women</option>
                             <option>Accessories</option>
                             <option>Shoes</option>
+							
                         </select>
                     </form>
 	            </div>
@@ -98,166 +108,61 @@
 			</div>
 			<div class="col-md-9">
 				<div class="row">
-					
+					{% for item in product %}
 			<div class="col-sm-4 p-l-40 p-r-40">
 				<div class="product-item">
 					<div class="product-thumb">
 						<span class="bage">Sale</span>
-						<img class="img-responsive" src="{% static 'images/shop/products/product-1.jpg' %}" alt="product-img" />
+						{% thumbnail item.image '300x300' crop="center" as jane %}
+						<img class="img-responsive" src="{{jane.url}}" width="{{jane.width}}" 
+						height="{{jane.height}}" alt="jane's Fashion {{item.title|title}}" />
+						{% endthumbnail %}
 						<div class="preview-meta">
 							<ul>
 								<li>
-			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
+			                        <a href="{{item.get_wishlist_shop}}" ><i class="tf-ion-ios-heart"></i></a>
 								</li>
 								<li>
-									<a href="#"><i class="tf-ion-eye"></i></a>
+									<a href="{{item.get_absolute_url }}"><i class="tf-ion-eye"></i></a>
 								</li>
 							</ul>
                       	</div>
 					</div>
 					<div class="product-content">
-						<h4>Reef Boardsport</h4>
-						<p class="price">$200</p>
+						<h4>{{item.title|title}}</h4>
+						<p class="price">&#8358;{{item.price|intcomma}}</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 p-l-40 p-r-40">
-				<div class="product-item">
-					<div class="product-thumb">
-						<span class="bage">Sale</span>
-						<img class="img-responsive" src="{% static 'images/shop/products/product-2.jpg' %}" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li>
-			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="tf-ion-eye"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4>Reef Boardsport</h4>
-						<p class="price">$200</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 p-l-40 p-r-40">
-				<div class="product-item">
-					<div class="product-thumb">
-						<span class="bage">Sale</span>
-						<img class="img-responsive" src="{% static 'images/shop/products/product-3.jpg' %}" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li>
-			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="tf-ion-eye"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4>Reef Boardsport</h4>
-						<p class="price">$200</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 p-l-40 p-r-40">
-				<div class="product-item">
-					<div class="product-thumb">
-						<span class="bage">Sale</span>
-						<img class="img-responsive" src="{% static 'images/shop/products/product-4.jpg' %}" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li>
-			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="tf-ion-eye"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4>Reef Boardsport</h4>
-						<p class="price">$200</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 p-l-40 p-r-40">
-				<div class="product-item">
-					<div class="product-thumb">
-						<span class="bage">Sale</span>
-						<img class="img-responsive" src="{% static 'images/shop/products/product-5.jpg' %}" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li>
-			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="tf-ion-eye"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4>Reef Boardsport</h4>
-						<p class="price">$200</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 p-l-40 p-r-40">
-				<div class="product-item">
-					<div class="product-thumb">
-						<span class="bage">Sale</span>
-						<img class="img-responsive" src="{% static 'images/shop/products/product-6.jpg' %}" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li>
-			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="tf-ion-eye"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4>Reef Boardsport</h4>
-						<p class="price">$200</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 p-l-40 p-r-40">
-				<div class="product-item">
-					<div class="product-thumb">
-						<span class="bage">Sale</span>
-						<img class="img-responsive" src="{% static 'images/shop/products/product-1.jpg' %}" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li>
-			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="tf-ion-eye"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4>Reef Boardsport</h4>
-						<p class="price">$200</p>
-					</div>
-				</div>
-			</div>
+{% endfor %}
 
 				</div>
 			
 	
 				</div>
+				<div class="text-center">
+					{% if is_paginated %}
+					<ul class="pagination post-pagination">
+						{% if page_obj.has_previous %}
+						<li><a href="?page={{page_obj.previous_page_number}}">Prev</a>
+						</li>
+						<li ><a href="?page={{page_obj.previous_page_number}}">{{page_obj.previous_page_number}}</a>
+						</li>
+						{% endif %}
+						<li class="active"><a href="?page={{page_obj.number}}">{{page_obj.number}}</a>
+						</li>
+				
+						{% if page_obj.has_next %}
+						<li ><a href="?page={{page_obj.next_page_number}}">{{page_obj.next_page_number}}</a>
+						</li>
+						<li><a href="?page={{page_obj.next_page_number}}">Next</a>
+						</li>
+						{% endif %}
+					</ul>
+
+					{% endif %}
+				</div>
+		
 				</div>				
 			</div>
 		
@@ -268,7 +173,7 @@
 {% include 'banner1.html' %}
 
 {% include 'banner2.html' %}
-{% include 'banner3.html' %}
+
 
 
 

@@ -4,14 +4,18 @@
 			<div class="col-md-12 text-center">
 				<div class="title">
 					<h2 class="fs-34 ">SUBSCRIBE TO NEWSLETTER</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, <br> facilis numquam impedit ut sequi. Minus facilis vitae excepturi sit laboriosam.</p>
+					<p>Be the first to know about offers.</p>
 				</div>
 				<div class="col-lg-6 col-md-offset-3">
+					<form action="{% url 'core:newsletter' %}" method="POST">
+						{% csrf_token %}
 				    <div class="input-group subscription-form">
-				      <input type="email" class="form-control" placeholder="Enter Your Email Address">
+	
+				      <input type="email" class="form-control" name='email' placeholder="Enter Your Email Address">
 				      <span class="input-group-btn">
-				        <button class="btn btn-main" type="button">Subscribe Now!</button>
-				      </span>
+				        <button class="btn btn-main" type="submit">Subscribe Now!</button>
+					  </span>
+				    </form>
 				    </div><!-- /input-group -->
 			  </div><!-- /.col-lg-6 -->
 

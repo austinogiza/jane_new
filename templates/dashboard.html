@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-
+{% block css %}
+<title>Dashboard - Jane's Fashion</title>
+{% load humanize %}
+{% endblock css %}
 {% block content %}
 
 <section class="page-header">
@@ -9,8 +12,8 @@
 				<div class="content">
 					<h1 class="page-name">Dashboard</h1>
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li class="active">my account</li>
+						<li><a href="{% url 'core:home' %}">Home</a></li>
+						<li class="active">My Account</li>
 					</ol>
 				</div>
 			</div>
@@ -24,9 +27,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="list-inline dashboard-menu text-center">
-					<li><a class="active" href="{% url 'jane:dashboard' %}">Dashboard</a></li>
-					<li><a href="{% url 'jane:order' %}">Orders</a></li>
-					<li><a href="{% url 'jane:address' %}">Address</a></li>
+					<li><a class="active" href="{% url 'core:dashboard' %}">Dashboard</a></li>
+					<li><a href="{% url 'core:order' %}">Orders</a></li>
+					<li><a href="{% url 'core:address' %}">Address</a></li>
 			
 				</ul>
 				<div class="dashboard-wrapper user-dashboard">
@@ -35,43 +38,40 @@
 						
 						</div>
 						<div class="media-body">
-							<h2 class="media-heading">Welcome Adam Smith</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, iure, est. Sit mollitia est maxime! Eos
-								cupiditate tempore, tempora omnis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, nihil. </p>
+							<h2 class="media-heading">Welcome {{request.user.first_name}} {{request.user.last_name}}</h2>
+							<p>
+ </p>
 						</div>
 					</div>
 					<div class="total-order mt-20">
-						<h4>Total Orders</h4>
+						<h4>Your Wishlist</h4>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
 									<tr>
-										<th>Order ID</th>
-										<th>Date</th>
-										<th>Items</th>
-										<th>Total Price</th>
-										<th></th>
+										<th>#</th>
+										<th>Item</th>
+									
+										<th>Price</th>
+										<th>Buy Now</th>
 									</tr>
 								</thead>
 								<tbody>
+								{% for item in wishlist %}
 									<tr>
-										<td><a href="#">#252125</a></td>
-										<td>Mar 25, 2016</td>
-										<td>2</td>
-										<td>$ 99.00</td>
+										<td><a href="#">{{forloop.counter}}</a></td>
+										<td>{{item.item.title}}</td>
+									
+										<td>{{item.item.price|intcomma}}</td>
+										    <td>
+               <div class="btn-group" role="group">
+                      <a href={{item.item.get_absolute_url}}  class="btn btn-default"><i class="tf-ion-android-cart" aria-hidden="true"></i></a>
+                   
+                    </div> 
+                  </td>
 									</tr>
-									<tr>
-										<td><a href="#">#252125</a></td>
-										<td>Mar 25, 2016</td>
-										<td>2</td>
-										<td>$ 99.00</td>
-									</tr>
-									<tr>
-										<td><a href="#">#252125</a></td>
-										<td>Mar 25, 2016</td>
-										<td>2</td>
-										<td>$ 99.00</td>
-									</tr>
+									{% endfor %}
+							
 								</tbody>
 							</table>
 						</div>

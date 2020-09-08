@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
@@ -10,8 +11,8 @@
 				<div class="content">
 					<h1 class="page-name">Checkout</h1>
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li class="active">checkout</li>
+						<li><a href="{% url 'core:home' %}">Home</a></li>
+						<li class="active">Checkout</li>
 					</ol>
 				</div>
 			</div>
@@ -25,30 +26,42 @@
             <div class="col-md-8">
                <div class="block billing-details">
                   <h4 class="widget-title">Billing Details</h4>
-                  <form class="checkout-form">
+                  <form class="checkout-form" method="POST">
+                     {% csrf_token %}
+
+             
                      <div class="form-group">
-                        <label for="full_name">Full Name</label>
-                        <input type="text" class="form-control" id="full_name" placeholder="">
+                        <label for="address">Address</label>
+                   
+                        {{ form.address }}
                      </div>
                      <div class="form-group">
-                        <label for="user_address">Address</label>
-                        <input type="text" class="form-control" id="user_address" placeholder="">
+                        <label for="phone">Phone</label>
+                        {{form.phone}}
                      </div>
+           
+                  
                      <div class="checkout-country-code clearfix">
                         <div class="form-group">
-                           <label for="user_post_code">Zip Code</label>
-                           <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
+                           <label for="zip">Zip Code</label>
+                           {{form.zip}}
                         </div>
                         <div class="form-group" >
-                           <label for="user_city">City</label>
-                           <input type="text" class="form-control" id="user_city" name="city" value="">
+                           <label for="state">State</label>
+                           {{form.state}}
                         </div>
                      </div>
+                
                      <div class="form-group">
-                        <label for="user_country">Country</label>
-                        <input type="text" class="form-control" id="user_country" placeholder="">
+                        <label for="country">Country</label>
+                        {{form.country}}
                      </div>
-					  <button href="confirmation.html" class="btn btn-main mt-20">Proceed</button >
+                     <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="default" id="default">
+                        <label class="custom-control-label" for="default">Save as default billing address</label>
+                      </div>
+                     
+					  <button href="{% url 'core:payment' %}" class="btn btn-main mt-20">Proceed</button >
                   </form>
                </div>
           
@@ -57,30 +70,31 @@
                <div class="product-checkout-details">
                   <div class="block">
                      <h4 class="widget-title">Order Summary</h4>
+                         {% for order_item in order.items.all %}
                      <div class="media product-card">
-                        <a class="pull-left" href="product-single.html">
+                        <a class="pull-left">
                 
                         </a>
                         <div class="media-body">
-                           <h4 class="media-heading"><a href="product-single.html">Ambassador Heritage 1921</a></h4>
-                           <p class="price">1 x $249</p>
-                           <span class="remove" >Remove</span>
+                           <h4 class="media-heading"><a href="{{order_item.item.get_absolute_url}}">{{ order_item.item.title|title}}</a></h4>
+                           <p class="price">{{ order_item.quantity }} x  &#8358; {{ order_item.item.price|intcomma}}</p>
+                           <a href="{{order_item.item.get_remove_from_cart_url}}" class="remove" >Remove</a>
                         </div>
                      </div>
-              
+              {% endfor %}
                      <ul class="summary-prices">
                         <li>
                            <span>Subtotal:</span>
-                           <span class="price">$190</span>
+                           <span class="price">&#8358; {{ order.get_total|intcomma }}</span>
                         </li>
                         <li>
-                           <span>Shipping:</span>
-                           <span>Free</span>
+                           <!-- <span>Shipping:</span>
+                           <span>Free</span> -->
                         </li>
                      </ul>
                      <div class="summary-total">
                         <span>Total</span>
-                        <span>$250</span>
+                        <span>&#8358; {{ order.get_total|intcomma }}</span>
                      </div>
                      <div class="verified-icon">
                         <img src="{% static 'images/shop/verified.png' %}">

@@ -1,5 +1,11 @@
+const messageAlert = document.querySelector('.messages');
+
 (function ($) { 'use strict';
-	
+  
+
+setTimeout(function(){
+  $('.messages').fadeOut('slow');
+}, 3000 );
 	
        /*------------------
         Preloader
@@ -156,6 +162,10 @@ $('#simple-timer').syotimer({
 })(jQuery);
 
 
+
+function reviewComment(e){
+  e.preventDefault();
+}
 
 
 
