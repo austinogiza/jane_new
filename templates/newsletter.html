@@ -7,7 +7,7 @@
 					<p>Be the first to know about offers.</p>
 				</div>
 				<div class="col-lg-6 col-md-offset-3">
-					<form action="{% url 'core:newsletter' %}" method="POST">
+					<form method="POST">
 						{% csrf_token %}
 				    <div class="input-group subscription-form">
 	

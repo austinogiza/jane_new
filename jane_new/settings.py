@@ -85,13 +85,24 @@ WSGI_APPLICATION = 'jane_new.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "jane",
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        "PORT": '',
+        "PASSWORD": 'austinforreal'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -163,10 +174,35 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+AUTH_USER_MODEL = 'core.CustomUser'
+
 ACCOUNT_AUTHENTICATION_METHOD= "username_email"
 
 ACCOUNT_EMAIL_REQUIRED = True
 
-ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_LOGOUT_ON_GET = False
 
 LOGIN_REDIRECT_URL = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+
+LOGIN_REDIRECT_URL ='/'
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
+ACCOUNT_SESSION_REMEMBER = True
+
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'janesfash@gmail.com'
+EMAIL_HOST_PASSWORD = "sogie2020"

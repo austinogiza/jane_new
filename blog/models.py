@@ -14,7 +14,7 @@ BLOG_TAGS =(
 
 
 class Blog(models.Model):
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=100)
     content = RichTextField()
     time = models.DateTimeField(auto_now_add=True)
@@ -36,6 +36,7 @@ class Blog(models.Model):
     class Meta:
         unique_together = ['title', 'slug']
 
+
     def get_absolute_url(self):
         return reverse("blog:blog-detail", kwargs={"slug": self.slug})
     
@@ -43,11 +44,9 @@ class Blog(models.Model):
     
 
 
-
-
 class BlogComment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE,blank=True, null=True)
     comment = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
 

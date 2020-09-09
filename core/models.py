@@ -6,15 +6,11 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
+from django.contrib.auth.models import AbstractUser, AbstractBaseUser
 # from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 
 
-CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport wear'),
-    ('OW', 'Outwear')
-)
 
 FEATURE_CHOICES = (
     ('none', 'None'),
@@ -31,6 +27,12 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping'),
 )
 
+
+class CustomUser(AbstractUser):
+    pass
+    
+    def __str__(self):
+        return self.username
 
 class Category(models.Model):
     name = models.CharField(max_length=250, blank=True)
@@ -54,11 +56,12 @@ class Category(models.Model):
         return self.item_set.all().count()
 
 
+
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
-    one_click_purchasing = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
@@ -119,6 +122,12 @@ class Item(models.Model):
         return reverse('core:wishlist', kwargs={
             "slug": self.slug
         })
+
+    def get_wishlist_product(self):
+        return reverse('core:wishlist-product', kwargs={
+            "slug": self.slug
+        })
+        
 
     @property
     def get_review_count(self):
@@ -182,6 +191,7 @@ class Order(models.Model):
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
 
+
     '''
     1. Item added to cart
     2. Adding a billing address
@@ -209,8 +219,8 @@ class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     address = models.CharField(max_length=900, blank=True, null=True)
-    country = models.CharField(max_length=900, blank=False)
-    zip = models.CharField(max_length=100, blank=False)
+    country = models.CharField(max_length=900, blank=False, null=True)
+    zip = models.CharField(max_length=100, blank=False,null=True)
     phone = models.CharField(max_length=20, blank=False, null=True)
     state = models.CharField(max_length=120, blank=False, null=True)
     default = models.BooleanField(default=False)
@@ -264,6 +274,7 @@ class Slider(models.Model):
     title = models.CharField(max_length=20, blank=True, null=True)
     text = models.CharField(max_length=20, blank=True, null=True)
     image = models.ImageField()
+    link = models.URLField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -272,14 +283,25 @@ class Slider(models.Model):
 class HomepageBanner(models.Model):
     image = models.ImageField()
     link = models.URLField(blank=True, null=True)
+    title = models.CharField(blank=True, null=True, max_length=100)
+    description = models.CharField(blank=True, null=True, max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Image"
 
+class About(models.Model):
+    link = models.URLField(blank=True, null=True)
+    title = models.CharField(blank=True, null=True, max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
 
 class HomesideBanner(models.Model):
     image = models.ImageField()
-    link = models.URLField(blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Image"
@@ -287,7 +309,11 @@ class HomesideBanner(models.Model):
 
 class ShoptopBanner(models.Model):
     image = models.ImageField()
+    title = models.CharField(max_length=100, blank=True, null=True)
+    text = models.CharField(max_length=100, blank=True, null=True)
     link = models.URLField(blank=True, null=True)
+
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Image"
@@ -295,7 +321,7 @@ class ShoptopBanner(models.Model):
 
 class ShopbottomBanner(models.Model):
     image = models.ImageField()
-    link = models.URLField(blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Image"

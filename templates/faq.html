@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block css %}
+
+<title>FAQ - Jane's Fashion</title>
+{% endblock css%}
 {% block content %}
 
 
@@ -10,7 +14,7 @@
 				<div class="content">
 					<h1 class="page-name">Frequently Asked Questions</h1>
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
+						<li><a href="{% url 'core:home' %}">Home</a></li>
 						<li class="active">F.A.Q</li>
 					</ol>
 				</div>
@@ -28,16 +32,19 @@
 				<p class="m-b-8">admin@mail.com</p>
 			</div>
 			<div class="col-md-8">
-				<h4 class="f-s-34 p-b-8">Order Status</h4>
-				<p class="f-s-18 p-b-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas iusto, alias, tempora fuga quam eveniet neque excepturi aliquid. Eligendi, mollitia.</p>
-				<h4 class="f-s-34 p-b-8">Shipping & Delivery</h4>
-				<p class="f-s-18 p-b-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam voluptatibus, incidunt similique nobis sint quisquam nam ab error consequuntur sit ullam ex eum exercitationem, excepturi explicabo beatae eos aspernatur odit ad perspiciatis, neque saepe magni enim. Maiores quia, quae sequi.</p>
-				<h4 class="f-s-34 p-b-8">Payments</h4>
-				<p class="f-s-18 p-b-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus repellat id, laboriosam ipsa repudiandae quisquam, suscipit officiis, praesentium itaque facilis distinctio dolorum. Velit reiciendis libero laudantium corporis, delectus impedit sunt.</p>
-				<h4 class="f-s-34 p-b-8">Returns & Exchanges</h4>
-				<p class="f-s-18 p-b-8"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam eaque nam, ab voluptas et debitis sint hic vel ratione dignissimos.</p>
+				<h4 class="f-s-34 p-b-8">How do I place an order</h4>
+				<p class="f-s-18 p-b-8">You simply place an order by clicking buy now on the products and checking out after filling your billing details and payment details. That simple.</p>
+				<h4 class="f-s-34 p-b-8">Can I get a discount</h4>
+				<p class="f-s-18 p-b-8">For now, no, however, during our promos and sales, any discount or coupon will be communicated</p>
+				<h4 class="f-s-34 p-b-8">How long will it take to get my items after I make payment </h4>
+				<p class="f-s-18 p-b-8"> Delivery is on or before 72 hours.</p>
+				<h4 class="f-s-34 p-b-8">Refund & Returns</h4>
+				<p class="f-s-18 p-b-8"> When the item received is not what is paid for, you are entitled to a refund within 7 days, from the day you receive the item.</p>
 				<h4 class="f-s-34 p-b-8">Privacy Policy</h4>
-				<p class="f-s-18 p-b-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae blanditiis quod saepe, inventore ipsum sint cum iste quae ratione nobis laborum minima autem totam similique, quia neque deleniti! Provident, suscipit.</p>
+				<p class="f-s-18 p-b-8">Information we collect <br>
+					The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.
+					
+					When you register for an Account, we may ask for your contact information, including items such as name, address, and email address.</p>
 			</div>
 		</div>
 	</div>

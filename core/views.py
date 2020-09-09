@@ -21,7 +21,8 @@ from .models import (
   
     Contact,
     Slider,
-    Newsletter
+    Newsletter,
+    About
 )
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -38,7 +39,43 @@ class HomeView(ListView):
 
     def get_queryset(self):
         qs = Item.objects.order_by('-pub_date')
+      
         return qs
+
+    def post(self, request, *args, **kwargs):
+        newsletter = NewsletterForm(self.request.POST)
+
+        if newsletter.is_valid():
+            email = newsletter.cleaned_data.get('email')
+            existing = Newsletter.objects.filter(email=email).count()
+
+            if existing == 0:
+                news = Newsletter(
+                email=email
+                    )
+                news.save()
+                messages.success(self.request, 'You have signup for the newsletter')
+                return redirect('core:home')
+            else:
+                messages.success(self.request, 'You have already used this email')
+                return redirect('core:home')
+        messages.error(self.request, 'You haven\'t for the newsletter')
+        return redirect('core:home')
+
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context.update({
+             'newarrivals': Item.objects.filter(new_arrival=True)[:4],
+            'homepage': HomepageBanner.objects.all()[:1],
+            'homeside': HomesideBanner.objects.all()[:1],
+            "shopbottom" : ShopbottomBanner.objects.all()[:1],
+            'shoptop': ShoptopBanner.objects.all()[:1],
+            'slider': Slider.objects.all()[:3],
+            'newsletter' : NewsletterForm()
+        })
+        return context
+    
 
 
 class ShopView(ListView):
@@ -54,16 +91,74 @@ class ShopView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ShopView, self).get_context_data(**kwargs)
         context.update({
-            'filter': ProductFilter(self.request.GET, queryset=self.get_queryset())
+            'filter': ProductFilter(self.request.GET, queryset=self.get_queryset()),
+                'homepage': HomepageBanner.objects.all()[:1],
+                    'newsletter' : NewsletterForm()
           
         })
         return context
+
+    
+    def post(self, request, *args, **kwargs):
+        newsletter = NewsletterForm(self.request.POST)
+
+        if newsletter.is_valid():
+            email = newsletter.cleaned_data.get('email')
+            existing = Newsletter.objects.filter(email=email).count()
+
+            if existing == 0:
+                news = Newsletter(
+                email=email
+                    )
+                news.save()
+                messages.success(self.request, 'You have signup for the newsletter')
+                return redirect('core:shop')
+            else:
+                messages.success(self.request, 'You have already used this email')
+                return redirect('core:shop')
+        messages.error(self.request, 'You haven\'t for the newsletter')
+        return redirect('core:shop')
+
+
     
 
         
 
 class AboutView(TemplateView):
     template_name = 'about.html'
+
+    def post(self, request, *args, **kwargs):
+        newsletter = NewsletterForm(self.request.POST)
+
+        if newsletter.is_valid():
+            email = newsletter.cleaned_data.get('email')
+            existing = Newsletter.objects.filter(email=email).count()
+
+            if existing == 0:
+                news = Newsletter(
+                email=email
+                    )
+                news.save()
+                messages.success(self.request, 'You have signup for the newsletter')
+                return redirect('core:about')
+            else:
+                messages.success(self.request, 'You have already used this email')
+                return redirect('core:about')
+        messages.error(self.request, 'You haven\'t for the newsletter')
+        return redirect('core:about')
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+        context.update({
+                  'newsletter' : NewsletterForm(),
+                    'homeside': HomesideBanner.objects.all()[:1],
+                         'about': About.objects.all()[:1],
+        }) 
+        return context
+     
+    
+   
+    
 
 
 
@@ -371,6 +466,18 @@ def wishlist(request, slug):
     messages.success(request, "You have added an item to your wishlist")
     return redirect('core:shop')
 
+
+@login_required
+def wishlist_product(request, slug):
+    item = get_object_or_404(Item, slug=slug)
+    wish_qs = Wishlist.objects.filter(user=request.user, item=item)
+    if wish_qs.exists():
+        wish_qs[0].delete()
+        messages.error(request, "You have removed an item to your wishlist")
+        return redirect('core:details', slug=slug)
+    Wishlist.objects.create(user=request.user, item=item)
+    messages.success(request, "You have added an item to your wishlist")
+    return redirect('core:details', slug=slug)
      
 
 @login_required
@@ -461,19 +568,5 @@ def remove_single_item_from_cart(request, slug):
         return redirect("core:details", slug=slug)
 
 
-def newsletter(request):
-    query = request.POST.get('email')
-    if query:
-        email = query
-        newsletter = Newsletter(
-            email=email
-        )
-        newsletter.save()
-        messages.success(request, 'You have signup for the newsletter')
-        return reverse_lazy('core:home')
-    messages.error(request, 'You haven\'t for the newsletter')
-    return reverse_lazy('core:home')
-
-    return render(request, 'newsletter-success.html')
 
     

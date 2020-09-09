@@ -19,7 +19,9 @@ from .models import (
     Slider, 
     Author,
     Wishlist,
-    Newsletter
+    Newsletter,
+    About
+
 )
 
 
@@ -122,6 +124,7 @@ admin.site.register(Contact, ContactAdmin)
 admin.site.register(Author)
 admin.site.register(Wishlist)
 admin.site.register(Newsletter)
+admin.site.register(About)
 
 
 admin.site.site_header = "Jane's Admin"

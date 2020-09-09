@@ -109,11 +109,11 @@
 			<div class="col-md-9">
 				<div class="row">
 					{% for item in product %}
-			<div class="col-sm-4 p-l-40 p-r-40">
+			<div class="col-sm-4 p-l-30 p-r-30">
 				<div class="product-item">
 					<div class="product-thumb">
-						<span class="bage">Sale</span>
-						{% thumbnail item.image '300x300' crop="center" as jane %}
+						<span class="bage">New</span>
+						{% thumbnail item.image '300x400' crop="center" as jane %}
 						<img class="img-responsive" src="{{jane.url}}" width="{{jane.width}}" 
 						height="{{jane.height}}" alt="jane's Fashion {{item.title|title}}" />
 						{% endthumbnail %}

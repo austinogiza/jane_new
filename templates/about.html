@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+
+<title>About Us - Jane's Fashion </title>
+{% endblock css %}
 
 {% block content %}
 
@@ -12,8 +16,8 @@
 				<div class="content">
 					<h1 class="page-name">About Us</h1>
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li class="active">about us</li>
+						<li><a href="{% url 'core:home' %}">Home</a></li>
+						<li class="active">About us</li>
 					</ol>
 				</div>
 			</div>
@@ -28,13 +32,12 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<img class="img-responsive" src="{% static 'images/about/about.jpg' %}">
+				<img class="img-success" src="{% static 'images/shop/products/product-1.jpg' %}">
 			</div>
 			<div class="col-md-6 text-left">
-				<h2 class="mt-40">About Our Shop</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius enim, accusantium repellat ex autem numquam iure officiis facere vitae itaque.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam qui vel cupiditate exercitationem, ea fuga est velit nulla culpa modi quis iste tempora non, suscipit repellendus labore voluptatem dicta amet?</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam qui vel cupiditate exercitationem, ea fuga est velit nulla culpa modi quis iste tempora non, suscipit repellendus labore voluptatem dicta amet?</p>
+				<h2 class="mt-40">Who Are <span class="colored-jane">We</span> </h2>
+				<p> Jane's Fashion is an online shop. We sell male and female fashion items. We import our items directly from the manufacturers and sell in wholesale and retail. </p>
+		
 		
 			</div>
 
@@ -42,14 +45,15 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6 text-left">
-				<h2 class="mt-40">About Our Shop</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius enim, accusantium repellat ex autem numquam iure officiis facere vitae itaque.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam qui vel cupiditate exercitationem, ea fuga est velit nulla culpa modi quis iste tempora non, suscipit repellendus labore voluptatem dicta amet?</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam qui vel cupiditate exercitationem, ea fuga est velit nulla culpa modi quis iste tempora non, suscipit repellendus labore voluptatem dicta amet?</p>
-		
+				<h2 class="mt-40">What We <span class="colored-jane">Do</span> </h2>
+				<p>
+					We are committed in giving our customers the best quality items at the best price. 
+					We teach interested persons who are willing to learn mini importation from various countries around the world. 
+					You can also contact us for procurement of items from outside  which may not relate to fashion.	</p>
+			
 			</div>
 			<div class="col-md-6">
-				<img class="img-responsive" src="{% static 'images/about/about.jpg' %}">
+				<img class="img-success" src="{% static 'images/shop/products/product-2.jpg' %}">
 			</div>
 		
 
@@ -90,21 +94,22 @@
 </section>
 
 
-<div class="section video-testimonial bg-1 overly-white text-center p-t-100 p-b-100 mt-50">
+<div class="section video-testimonial bg-1 overly-white text-center p-t-100 p-b-100 mt-50 m-b-50">
 	<div class="container">
 		<div class="row">
+			{% for item in about %}
 			<div class="col-md-12">
 				<h2>Video presentation</h2>
-				<a class="play-icon" href="https://www.youtube.com/watch?v=oyEuk8j8imI&amp;rel=0" data-toggle="lightbox">
+				<a class="play-icon" href="{{item.link}}" data-toggle="lightbox">
 					<i class="tf-ion-ios-play"></i>
 				</a>
 			</div>
+			{% endfor %}
 		</div>
 	</div>
 </div>
 
-{% include 'banner2.html' %}
-{% include 'banner3.html' %}
+{% include 'banner4.html' %}
 
 
 
