@@ -206,3 +206,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'janesfash@gmail.com'
 EMAIL_HOST_PASSWORD = "sogie2020"
+
+
+ACCOUNT_FORMS = {'signup': 'core.forms.CustomSignupForm'}

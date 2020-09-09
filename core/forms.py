@@ -1,6 +1,8 @@
 from django import forms
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
+from allauth.account.forms import SignupForm
+from .models import CustomUser
 
 
 class ReviewForm(forms.Form):
@@ -83,3 +85,19 @@ class NewsletterForm(forms.Form):
         'class': 'form-control',
         'placeholder': 'Enter Your Email Address'
     }))
+
+
+class CustomSignupForm(SignupForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': "First Name",
+        'class': 'form-control'
+    }))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': "Last Name",
+        'class': 'form-control'
+    }))
+    class Meta:
+        model = CustomUser
+        fields = ("__all__")
+
+    
